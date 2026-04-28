@@ -8,6 +8,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="description" content="{{ $product->subtitle ?? '' }}">
+    <link rel="icon" type="image/png" href="/images/faav-icon.png">
     <base href="/">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="icomoon/icomoon.css">

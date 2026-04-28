@@ -10,6 +10,7 @@
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
+    <link rel="icon" type="image/png" href="/images/faav-icon.png">
     <base href="/">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="icomoon/icomoon.css">
@@ -97,7 +98,7 @@
                   <li class="user-items search-item pe-3">
                     <a href="#" class="search-button">
                       <i class="icon icon-search"></i>
-                    </a>
+                    </a>logo
                   </li>
                 </ul>
               </div>
@@ -110,7 +111,7 @@
               <div class="col-lg-2 col-md-2">
                 <div class="main-logo">
                   <a href="index.html">
-                    <img src="images/main-logo.png" alt="logo">
+                    <img src="images/logo.png" alt="logo">
                   </a>
                 </div>
               </div>
