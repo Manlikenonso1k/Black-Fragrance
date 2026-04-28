@@ -15,6 +15,8 @@ Route::view('/contact', 'pages.contact');
 Route::view('/contact.html', 'pages.contact');
 Route::view('/shop', 'pages.shop');
 Route::view('/shop.html', 'pages.shop');
+Route::view('/product', 'pages.product');
+Route::view('/product.html', 'pages.product');
 Route::view('/single-post', 'pages.single-post');
 Route::view('/single-post.html', 'pages.single-post');
 Route::view('/styles', 'pages.styles');

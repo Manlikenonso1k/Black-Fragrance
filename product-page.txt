@@ -1,0 +1,25 @@
+### **AI UI Design Prompt**
+
+**Prompt:**
+Design a high-fidelity, minimalist luxury e-commerce product page for a premium fragrance brand. 
+
+**Visual Style:**
+* **Color Palette:** Strictly monochromatic using deep black (#000000), crisp white (#FFFFFF), and various shades of professional grey (#F5F5F5, #E0E0E0, #333333).
+* **Typography:** Use a sophisticated Serif font for headings and product titles, paired with a clean, highly legible Sans-Serif font for body text and navigation.
+* **Aesthetic:** High-contrast, spacious, and modern. Use thin borders (1px), subtle shadows, and plenty of whitespace to create an "expensive" feel.
+
+**Layout Structure:**
+* **Header:** Minimalist bar with a centered logo, a slim search input with rounded corners, and icon-only buttons for user profile and cart.
+* **Hero Section:** * **Left:** Large, high-quality product image display with a vertical thumbnail gallery (left-aligned) for alternative views.
+    * **Right:** Product title in large serif, price, and subtitle. Include circular color swatches (Onyx, Graphite) and pill-shaped volume selectors (50ml, 100ml).
+    * **Actions:** A quantity stepper adjacent to a wide, solid black "Add to Cart" button and a ghost "Wishlist" button.
+* **Product Info:** * Clean bulleted list for "Key Features."
+    * **Scent Notes:** Display "Top," "Heart," and "Base" notes using rounded pill-shaped tags with light grey backgrounds.
+    * **Accordions:** Minimalist collapsible sections for "Ingredients & Formula" and "Care & Storage" using thin horizontal dividers.
+* **Recommendations:** A "You may also like" grid featuring cards with product images, title, price, and a "Quick Add" button that appears on hover.
+* **Footer:** Four-column layout containing brand mission, shop links, support links, and a "Stay in touch" newsletter signup with a dark button.
+
+**Component Details:**
+* Buttons should have minimal rounding (2px to 4px) or be completely square.
+* Use subtle hover states (e.g., black buttons turning dark grey).
+* In-stock indicators should be subtle (simple text, no bright colors).

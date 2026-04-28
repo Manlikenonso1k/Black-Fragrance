@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Ultras - Clothing Store eCommerce Store HTML Website Template</title>
+    <title>Black Fragrance-Clothing Store eCommerce</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -245,7 +245,7 @@
           <div class="col-lg-6 col-md-12">
             <div class="detail">
               <div class="display-header">
-                <h2 class="section-title">How was Ultras Store started?</h2>
+                <h2 class="section-title">How was Black Fragrance Store started?</h2>
                 <p>Risus augue curabitur diam senectus congue velit et. Sed vitae metus nibh sit era. Nulla adipiscing pharetra pellentesque maecenas odio eros at. Et libero vulputate amet duis erat volutpat vitae eget. Sed vitae metus nibh sit era. Nulla adipiscing pharetra pellentesque maecenas odio eros at.
                 <br>
                 Sed vitae metus nibh sit era. Nulla adipiscing pharetra pellentesque maecenas odio eros at. Et libero vulputate amet duis erat volutpat vitae eget. Quam libero etiam et in ac at quis. Risus augue curabitur diam senectus congue velit et. </p>
@@ -393,7 +393,7 @@
         <div class="section-header">
           <h2 class="section-title">Follow our instagram</h2>
         </div>
-        <p>Our official Instagram account <a href="#">@ultras</a> or <a href="#">#ultras_clothing</a>
+        <p>Our official Instagram account <a href="#">@ultras</a> or <a href="#">#Black Fragrance</a>
         </p>
         <div class="row d-flex flex-wrap justify-content-between">
           <div class="col-lg-2 col-md-4 col-sm-6">
@@ -442,7 +442,7 @@
           <div class="row d-flex flex-wrap justify-content-between">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="footer-menu">
-                <h5 class="widget-title">Ultras</h5>
+                <h5 class="widget-title">Black Fragrance</h5>
                 <ul class="menu-list list-unstyled">
                   <li class="menu-item">
                     <a href="about.html">About us</a>
@@ -460,7 +460,7 @@
                     <a href="#">Affiliate Programme</a>
                   </li>
                   <li class="menu-item">
-                    <a href="#">Ultras Press</a>
+                    <a href="#">Black Fragrance Press</a>
                   </li>
                 </ul>
               </div>
@@ -493,7 +493,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="footer-menu">
                 <h5 class="widget-title">Contact Us</h5>
-                <p>Do you have any questions or suggestions? <a href="#" class="email">ourservices@ultras.com</a>
+                <p>Do you have any questions or suggestions? <a href="#" class="email">ourservices@Blackfragrance.com</a>
                 </p>
                 <p>Do you need assistance? Give us a call. <br>
                   <strong>+57 444 11 00 35</strong>

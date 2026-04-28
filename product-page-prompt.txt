@@ -1,0 +1,42 @@
+Design a high-fidelity, minimalist luxury e-commerce product page for Black Fragrance, a premium fragrance brand. The page should feel expensive, editorial, and clean, with a monochrome-first visual language and a restrained accent color only if needed for subtle UI emphasis.
+
+Color palette:
+- Deep black: #000000
+- Crisp white: #FFFFFF
+- Light grey: #F5F5F5
+- Border grey: #E0E0E0
+- Dark grey: #333333
+
+Typography:
+- Use a sophisticated serif font for headings and product titles
+- Use a clean, highly legible sans-serif font for body text, labels, and navigation
+- Keep type contrast strong and spacing generous
+
+Overall style:
+- High-contrast, spacious, modern, and luxury-focused
+- Thin 1px borders
+- Very subtle shadows
+- Minimal rounding, 2px to 4px, or fully square where appropriate
+- Subtle hover states only, with black buttons shifting to dark grey
+- No bright colors; in-stock indicators should be quiet and text-based
+
+Layout structure:
+- Minimal header with centered logo, slim rounded search field, and icon-only buttons for account and cart
+- Hero section with a large product image gallery on the left and a vertical thumbnail strip for alternate views
+- Product details on the right with a serif title, price, subtitle, circular color swatches, and pill-shaped volume selectors
+- Quantity stepper next to a wide solid black Add to Cart button and a ghost Wishlist button
+- Clean product info area with a bullet list of key features
+- Scent notes shown as rounded grey tags for Top, Heart, and Base
+- Minimal accordion sections for Ingredients & Formula and Care & Storage
+- You may also like section as a neat product grid with image, title, price, and a Quick Add button on hover
+- Footer with four columns: brand mission, shop links, support links, and newsletter signup
+
+Component details:
+- Keep controls precise and refined
+- Use thin dividers instead of heavy panels
+- Maintain strong whitespace between sections
+- Make the layout responsive and mobile-first
+- Ensure the page still feels premium on small screens
+
+Output goal:
+- Produce a polished product page design that can be used as the basis for Black Fragrance in Uizard, v0.dev, or any similar AI UI generator.

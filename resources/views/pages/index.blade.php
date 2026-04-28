@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Ultras - Clothing Store eCommerce Store HTML Website Template</title>
+    <title>Black Fragrance-Clothing Store eCommerce</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -256,7 +256,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Full sleeve cover shirt</a>
+                    <a href="/product">Full sleeve cover shirt</a>
                   </h3>
                   <span class="item-price text-primary">$40.00</span>
                 </div>
@@ -283,7 +283,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Volunteer Half blue</a>
+                    <a href="/product">Volunteer Half blue</a>
                   </h3>
                   <span class="item-price text-primary">$38.00</span>
                 </div>
@@ -310,7 +310,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Double yellow shirt</a>
+                    <a href="/product">Double yellow shirt</a>
                   </h3>
                   <span class="item-price text-primary">$44.00</span>
                 </div>
@@ -337,7 +337,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Long belly grey pant</a>
+                    <a href="/product">Long belly grey pant</a>
                   </h3>
                   <span class="item-price text-primary">$33.00</span>
                 </div>
@@ -1691,7 +1691,7 @@
         <div class="section-header">
           <h2 class="section-title">Follow our instagram</h2>
         </div>
-        <p>Our official Instagram account <a href="#">@ultras</a> or <a href="#">#ultras_clothing</a>
+        <p>Our official Instagram account <a href="#">@ultras</a> or <a href="#">#Black Fragrance</a>
         </p>
         <div class="row d-flex flex-wrap justify-content-between">
           <div class="col-lg-2 col-md-4 col-sm-6">
@@ -1781,7 +1781,7 @@
           <div class="row d-flex flex-wrap justify-content-between">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="footer-menu">
-                <h5 class="widget-title">Ultras</h5>
+                <h5 class="widget-title">Black Fragrance</h5>
                 <ul class="menu-list list-unstyled">
                   <li class="menu-item">
                     <a href="about.html">About us</a>
@@ -1832,7 +1832,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="footer-menu">
                 <h5 class="widget-title">Contact Us</h5>
-                <p>Do you have any questions or suggestions? <a href="#" class="email">ourservices@ultras.com</a>
+                <p>Do you have any questions or suggestions? <a href="#" class="email">ourservices@BlackFragrance.com</a>
                 </p>
                 <p>Do you need assistance? Give us a call. <br>
                   <strong>+57 444 11 00 35</strong>

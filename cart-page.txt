@@ -1,0 +1,26 @@
+**Prompt:**
+Create a high-fidelity, professional UI design for an e-commerce shopping cart page. 
+
+**Visual Style:**
+* Palette: Monochrome (Strictly black, white, and varying shades of grey).
+* Typography: High-end Serif for titles; clean, modern Sans-Serif for functional text and numbers.
+* Aesthetics: Minimalist, spacious, 1px borders, and low-radius corners (2-4px). 
+
+**Layout & Components:**
+* Navigation & Progress: A top header with text links and utility icons. Include a subtle three-step checkout progress indicator (Cart, Shipping, Payment) using thin lines and numbered circles.
+* Cart List (Left Column): 
+    * Individual product rows featuring a square thumbnail image, product title, variant details (e.g., size/scent), and price.
+    * Interactive elements: A compact quantity stepper (- 1 +), a text-link "Remove" button, and a "Save for later" checkbox.
+    * Promo Code Section: A clean, wide input field with a ghost "Apply" button located below the item list.
+* Order Summary (Right Sidebar): 
+    * A sticky container with a light grey background.
+    * Line items for Subtotal, Discounts, and Estimated Taxes.
+    * A mini-form for "Shipping Estimate" with simple input fields for ZIP and Country.
+    * A prominent, solid black "Proceed to Checkout" call-to-action button.
+* Upsell Section: A "You might also like" horizontal grid at the bottom featuring product cards with a "Quick Add" button.
+* Footer: A multi-column layout for brand info, navigation links, and a newsletter subscription box.
+
+**Technical Details:**
+* Use high contrast for primary buttons.
+* Maintain generous whitespace between sections to ensure a clean, premium feel.
+* Ensure all dividers are light grey and 1px thick.

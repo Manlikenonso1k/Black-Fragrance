@@ -1,0 +1,42 @@
+Design a responsive e-commerce product page, cart page, and checkout page for a fashion storefront called Black Fragrance. Match the existing project’s visual style: clean, modern, minimal, and elegant. Use the same color language already present in the site: primary blue-gray as the main accent, deep charcoal for text and headings, soft gray for borders and secondary UI, very light gray for surfaces, and pure white for backgrounds.
+
+Color direction:
+- Primary accent: #6995B1
+- Dark text: #191919
+- Muted text: #8d8d8d
+- Border gray: #dbdbdb
+- Light surface: #fafafa
+- White: #ffffff
+- Subtle pale accent: #eef1f3
+
+Product page direction:
+- Large product image gallery with thumbnails
+- Product title, price, short description, size and color selectors
+- Add to cart, wishlist, and quick view actions
+- Clean product details panel with lots of spacing
+- Related products section below
+- Use elegant typography and soft dividers
+
+Cart page direction:
+- Table or card layout with product image, name, price, quantity, subtotal
+- Quantity stepper controls
+- Promo code box
+- Order summary panel with subtotal, shipping, discount, and total
+- Strong but tasteful checkout button using the primary blue-gray color
+- Minimal clutter, airy spacing, and clear hierarchy
+
+Checkout page direction:
+- Two-column layout on desktop, stacked on mobile
+- Billing details form, shipping address, payment method section
+- Order summary sidebar with item list and totals
+- Clean input fields, subtle borders, rounded corners
+- Primary CTA button in #6995B1 with dark text and gray supporting elements
+- Premium fashion-store feel, not overly flashy
+
+Overall UI style:
+- Modern storefront, high-end but approachable
+- Lots of white space
+- Soft gray borders and section dividers
+- Charcoal typography with blue-gray accent buttons and links
+- Smooth, polished, conversion-focused layout
+- Responsive, mobile-first, and consistent across all three pages
