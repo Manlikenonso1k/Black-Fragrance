@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,10 +14,24 @@ Route::view('/blog', 'pages.blog');
 Route::view('/blog.html', 'pages.blog');
 Route::view('/contact', 'pages.contact');
 Route::view('/contact.html', 'pages.contact');
-Route::view('/shop', 'pages.shop');
-Route::view('/shop.html', 'pages.shop');
-Route::view('/product', 'pages.product');
-Route::view('/product.html', 'pages.product');
+Route::get('/shop', function () {
+    $products = Product::all();
+    return view('pages.shop', ['products' => $products]);
+});
+
+Route::get('/product', function () {
+    $product = Product::first();
+
+    abort_if(! $product, 404);
+
+    return redirect()->route('product.show', $product);
+});
+
+// Dynamic product detail route using slug
+Route::get('/product/{product}', function (Product $product) {
+    return view('pages.product', ['product' => $product]);
+})->name('product.show');
+
 Route::view('/single-post', 'pages.single-post');
 Route::view('/single-post.html', 'pages.single-post');
 Route::view('/styles', 'pages.styles');

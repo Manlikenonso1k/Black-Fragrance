@@ -214,16 +214,15 @@
               <div class="tab-content">
                 <div id="all" data-tab-content class="active">
                   <div class="row d-flex flex-wrap">
+                    @forelse ($products as $product)
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
                       <div class="image-holder">
-                        <img src="images/selling-products1.jpg" alt="Books" class="product-image">
+                        <img src="{{ $product->image }}" alt="{{ $product->name }}" class="product-image">
                       </div>
                       <div class="cart-concern">
                         <div class="cart-button d-flex justify-content-between align-items-center">
-                          <button type="button" class="btn-wrap cart-link d-flex align-items-center">add to cart <i class="icon icon-arrow-io"></i>
-                          </button>
-                          <button type="button" class="view-btn tooltip
-                              d-flex">
+                          <a href="/product/{{ $product->slug }}" class="btn-wrap cart-link d-flex align-items-center">View Product <i class="icon icon-arrow-io"></i></a>
+                          <button type="button" class="view-btn tooltip d-flex" onclick="window.location.href='/product/{{ $product->slug }}'">
                             <i class="icon icon-screen-full"></i>
                             <span class="tooltip-text">Quick view</span>
                           </button>
@@ -234,61 +233,14 @@
                       </div>
                       <div class="product-detail">
                         <h3 class="product-title">
-                          <a href="single-product.html">Half sleeve T-shirt</a>
+                          <a href="/product/{{ $product->slug }}">{{ $product->name }}</a>
                         </h3>
-                        <div class="item-price text-primary">$40.00</div>
+                        <div class="item-price text-primary">${{ number_format($product->price, 2) }}</div>
                       </div>
                     </div>
-                    <div class="product-item col-lg-4 col-md-6 col-sm-6">
-                      <div class="image-holder">
-                        <img src="images/selling-products2.jpg" alt="Books" class="product-image">
-                      </div>
-                      <div class="cart-concern">
-                        <div class="cart-button d-flex justify-content-between align-items-center">
-                          <button type="button" class="btn-wrap cart-link d-flex align-items-center">add to cart <i class="icon icon-arrow-io"></i>
-                          </button>
-                          <button type="button" class="view-btn tooltip
-                              d-flex">
-                            <i class="icon icon-screen-full"></i>
-                            <span class="tooltip-text">Quick view</span>
-                          </button>
-                          <button type="button" class="wishlist-btn">
-                            <i class="icon icon-heart"></i>
-                          </button>
-                        </div>
-                      </div>
-                      <div class="product-detail">
-                        <h3 class="product-title">
-                          <a href="single-product.html">Stylish Grey T-shirt</a>
-                        </h3>
-                        <div class="item-price text-primary">$35.00</div>
-                      </div>
-                    </div>
-                    <div class="product-item col-lg-4 col-md-6 col-sm-6">
-                      <div class="image-holder">
-                        <img src="images/selling-products3.jpg" alt="Books" class="product-image">
-                      </div>
-                      <div class="cart-concern">
-                        <div class="cart-button d-flex justify-content-between align-items-center">
-                          <button type="button" class="btn-wrap cart-link d-flex align-items-center">add to cart <i class="icon icon-arrow-io"></i>
-                          </button>
-                          <button type="button" class="view-btn tooltip
-                              d-flex">
-                            <i class="icon icon-screen-full"></i>
-                            <span class="tooltip-text">Quick view</span>
-                          </button>
-                          <button type="button" class="wishlist-btn">
-                            <i class="icon icon-heart"></i>
-                          </button>
-                        </div>
-                      </div>
-                      <div class="product-detail">
-                        <h3 class="product-title">
-                          <a href="single-product.html">Silk White Shirt</a>
-                        </h3>
-                        <div class="item-price text-primary">$35.00</div>
-                      </div>
-                    </div>
+                    @empty
+                    <p>No products available.</p>
+                    @endforelse
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
                       <div class="image-holder">
                         <img src="images/selling-products4.jpg" alt="Books" class="product-image">
