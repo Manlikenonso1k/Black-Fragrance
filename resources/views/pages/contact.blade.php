@@ -168,9 +168,9 @@
         <div class="col-md-3 col-sm-6">
           <div class="icon-box">
             <i class="icon icon-truck"></i>
-            <h4 class="block-title">
-              <strong>Free shipping</strong> Over $200
-            </h4>
+              <h4 class="block-title">
+                <strong>Free shipping</strong> Over ₦200
+              </h4>
           </div>
         </div>
         <div class="col-md-3 col-sm-6">

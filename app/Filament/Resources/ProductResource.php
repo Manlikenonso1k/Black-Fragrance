@@ -52,7 +52,7 @@ class ProductResource extends Resource
                                 Forms\Components\TextInput::make('price')
                                     ->required()
                                     ->numeric()
-                                    ->prefix('$'),
+                                    ->prefix('₦'),
                                 Forms\Components\TextInput::make('volume')
                                     ->helperText('Used for simple products and default display volume.'),
                                 Forms\Components\Toggle::make('is_variable')

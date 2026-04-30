@@ -530,7 +530,7 @@
 
                 <!-- Price Section -->
                 <div class="price-section">
-                    <div class="price">${{ number_format($product->price, 2) }}</div>
+                    <div class="price">₦{{ number_format($product->price, 2) }}</div>
                     <div class="stock-status {{ $product->in_stock ? 'in-stock' : '' }}">
                         {{ $product->in_stock ? 'In Stock' : 'Out of Stock' }}
                     </div>
@@ -661,7 +661,7 @@
                             <button class="quick-add-btn" onclick="event.stopPropagation(); quickAdd({{ $related->id }})">Quick Add</button>
                         </a>
                         <h3 class="product-card-name">{{ $related->name }}</h3>
-                        <p class="product-card-price">${{ number_format($related->price, 2) }}</p>
+                        <p class="product-card-price">₦{{ number_format($related->price, 2) }}</p>
                     </div>
                 @empty
                     <p>No other products available.</p>

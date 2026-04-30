@@ -310,7 +310,7 @@
           <div class="icon-box">
             <i class="icon icon-truck"></i>
             <h4 class="block-title">
-              <strong>Free shipping</strong> Over $200
+              <strong>Free shipping</strong> Over ₦200
             </h4>
           </div>
         </div>

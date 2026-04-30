@@ -57,7 +57,7 @@
                         <h3 class="product-title">
                           <a href="/product/{{ $product->slug }}">{{ $product->name }}</a>
                         </h3>
-                        <div class="item-price text-primary">${{ number_format($product->price, 2) }}</div>
+                        <div class="item-price text-primary">₦{{ number_format($product->price, 2) }}</div>
                       </div>
                     </div>
                     @empty
@@ -85,7 +85,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Grunge Hoodie</a>
                         </h3>
-                        <div class="item-price text-primary">$30.00</div>
+                        <div class="item-price text-primary">₦30.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -110,7 +110,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Full sleeve Jeans jacket</a>
                         </h3>
-                        <div class="item-price text-primary">$40.00</div>
+                        <div class="item-price text-primary">₦40.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -135,7 +135,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Grey Check Coat</a>
                         </h3>
-                        <div class="item-price text-primary">$30.00</div>
+                        <div class="item-price text-primary">₦30.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -160,7 +160,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Long Sleeve T-shirt</a>
                         </h3>
-                        <div class="item-price text-primary">$40.00</div>
+                        <div class="item-price text-primary">₦40.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -185,7 +185,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Half Sleeve T-shirt</a>
                         </h3>
-                        <div class="item-price text-primary">$35.00</div>
+                        <div class="item-price text-primary">₦35.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -210,7 +210,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Orange white Nike</a>
                         </h3>
-                        <div class="item-price text-primary">$55.00</div>
+                        <div class="item-price text-primary">₦55.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -235,7 +235,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Running Shoe</a>
                         </h3>
-                        <div class="item-price text-primary">$65.00</div>
+                        <div class="item-price text-primary">₦65.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -260,7 +260,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Tennis Shoe</a>
                         </h3>
-                        <div class="item-price text-primary">$80.00</div>
+                        <div class="item-price text-primary">₦80.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -285,7 +285,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Nike Brand Shoe</a>
                         </h3>
-                        <div class="item-price text-primary">$65.00</div>
+                        <div class="item-price text-primary">₦65.00</div>
                       </div>
                     </div>
                   </div>
@@ -314,7 +314,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Orange white Nike</a>
                         </h3>
-                        <div class="item-price text-primary">$55.00</div>
+                        <div class="item-price text-primary">₦55.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -339,7 +339,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Running Shoe</a>
                         </h3>
-                        <div class="item-price text-primary">$65.00</div>
+                        <div class="item-price text-primary">₦65.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -364,7 +364,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Tennis Shoe</a>
                         </h3>
-                        <div class="item-price text-primary">$80.00</div>
+                        <div class="item-price text-primary">₦80.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -389,7 +389,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Nike Brand Shoe</a>
                         </h3>
-                        <div class="item-price text-primary">$65.00</div>
+                        <div class="item-price text-primary">₦65.00</div>
                       </div>
                     </div>
                   </div>
@@ -418,7 +418,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Silk White Shirt</a>
                         </h3>
-                        <div class="item-price text-primary">$35.00</div>
+                        <div class="item-price text-primary">₦35.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -443,7 +443,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">White Half T-shirt</a>
                         </h3>
-                        <div class="item-price text-primary">$30.00</div>
+                        <div class="item-price text-primary">₦30.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -468,7 +468,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Ghee Half T-shirt</a>
                         </h3>
-                        <div class="item-price text-primary">$40.00</div>
+                        <div class="item-price text-primary">₦40.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -493,7 +493,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Long Sleeve T-shirt</a>
                         </h3>
-                        <div class="item-price text-primary">$40.00</div>
+                        <div class="item-price text-primary">₦40.00</div>
                       </div>
                     </div>
                   </div>
@@ -522,7 +522,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Half sleeve T-shirt</a>
                         </h3>
-                        <div class="item-price text-primary">$40.00</div>
+                        <div class="item-price text-primary">₦40.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -547,7 +547,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Grunge Hoodie</a>
                         </h3>
-                        <div class="item-price text-primary">$30.00</div>
+                        <div class="item-price text-primary">₦30.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -572,7 +572,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Long Sleeve T-shirt</a>
                         </h3>
-                        <div class="item-price text-primary">$40.00</div>
+                        <div class="item-price text-primary">₦40.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -597,7 +597,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Stylish Grey Pant</a>
                         </h3>
-                        <div class="item-price text-primary">$40.00</div>
+                        <div class="item-price text-primary">₦40.00</div>
                       </div>
                     </div>
                   </div>
@@ -626,7 +626,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">White Hoodie</a>
                         </h3>
-                        <div class="item-price text-primary">$40.00</div>
+                        <div class="item-price text-primary">₦40.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -651,7 +651,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Navy Blue Hoodie</a>
                         </h3>
-                        <div class="item-price text-primary">$45.00</div>
+                        <div class="item-price text-primary">₦45.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -676,7 +676,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Dark Green Hoodie</a>
                         </h3>
-                        <div class="item-price text-primary">$35.00</div>
+                        <div class="item-price text-primary">₦35.00</div>
                       </div>
                     </div>
                   </div>
@@ -705,7 +705,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Silk White Shirt</a>
                         </h3>
-                        <div class="item-price text-primary">$ 35.00</div>
+                        <div class="item-price text-primary">₦35.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -730,7 +730,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Grunge Hoodie</a>
                         </h3>
-                        <div class="item-price text-primary">$ 30.00</div>
+                        <div class="item-price text-primary">₦30.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -755,7 +755,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Grey Check Coat</a>
                         </h3>
-                        <div class="item-price text-primary">$ 30.00</div>
+                        <div class="item-price text-primary">₦30.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -809,7 +809,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Full Sleeve Jeans Jacket</a>
                         </h3>
-                        <div class="item-price text-primary">$40.00</div>
+                        <div class="item-price text-primary">₦40.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -834,7 +834,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Stylish Grey Coat</a>
                         </h3>
-                        <div class="item-price text-primary">$35.00</div>
+                        <div class="item-price text-primary">₦35.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -859,7 +859,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Grey Check Coat</a>
                         </h3>
-                        <div class="item-price text-primary">$35.00</div>
+                        <div class="item-price text-primary">₦35.00</div>
                       </div>
                     </div>
                   </div>
@@ -888,7 +888,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Stylish Women Bag</a>
                         </h3>
-                        <div class="item-price text-primary">$35.00</div>
+                        <div class="item-price text-primary">₦35.00</div>
                       </div>
                     </div>
                     <div class="product-item col-lg-4 col-md-6 col-sm-6">
@@ -913,7 +913,7 @@
                         <h3 class="product-title">
                           <a href="single-product.html">Stylish Gadgets</a>
                         </h3>
-                        <div class="item-price text-primary">$30.00</div>
+                        <div class="item-price text-primary">₦30.00</div>
                       </div>
                     </div>
                   </div>
@@ -986,19 +986,19 @@
                 <h5 class="widget-title">Filter By Price</h5>
                 <ul class="product-tags sidebar-list list-unstyled">
                   <li class="tags-item">
-                    <a href="">Less than $10</a>
+                    <a href="">Less than ₦10</a>
                   </li>
                   <li class="tags-item">
-                    <a href="">$10- $20</a>
+                    <a href="">₦10- ₦20</a>
                   </li>
                   <li class="tags-item">
-                    <a href="">$20- $30</a>
+                    <a href="">₦20- ₦30</a>
                   </li>
                   <li class="tags-item">
-                    <a href="">$30- $40</a>
+                    <a href="">₦30- ₦40</a>
                   </li>
                   <li class="tags-item">
-                    <a href="">$40- $50</a>
+                    <a href="">₦40- ₦50</a>
                   </li>
                 </ul>
               </div>
@@ -1146,10 +1146,10 @@
       <div class="container">
         <div class="row d-flex flex-wrap align-items-center justify-content-between">
           <div class="col-md-3 col-sm-6">
-            <div class="icon-box">
+                <div class="icon-box">
               <i class="icon icon-truck"></i>
               <h4 class="block-title">
-                <strong>Free shipping</strong> Over $200
+                <strong>Free shipping</strong> Over ₦200
               </h4>
             </div>
           </div>

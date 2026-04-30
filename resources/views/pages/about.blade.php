@@ -20,14 +20,14 @@
   <section id="shipping-information" class="padding-large">
     <div class="container">
       <div class="row d-flex flex-wrap align-items-center justify-content-between">
-        <div class="col-md-3 col-sm-6">
-          <div class="icon-box">
-            <i class="icon icon-truck"></i>
-            <h4 class="block-title">
-              <strong>Free shipping</strong> Over $200
-            </h4>
-          </div>
-        </div>
+            <div class="col-md-3 col-sm-6">
+              <div class="icon-box">
+                <i class="icon icon-truck"></i>
+                <h4 class="block-title">
+                  <strong>Free shipping</strong> Over ₦200
+                </h4>
+              </div>
+            </div>
         <div class="col-md-3 col-sm-6">
           <div class="icon-box">
             <i class="icon icon-return"></i>
