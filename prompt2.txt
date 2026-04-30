@@ -1,0 +1,19 @@
+You are an expert Laravel developer. I have a master layout file located at resources/views/layouts/app.blade.php. This file already contains the main <html> structure, <head>, the top <nav> (header), the <footer>, and all necessary CSS/JS scripts. It uses @yield('content') to inject page-specific content.
+
+Your Task:
+I need you to refactor the 7 other page templates in my project to properly inherit from this master layout and fix the URL routing.
+
+Strict Instructions to Follow:
+
+Extend the Layout: Add @extends('layouts.app') to the very top of all 7 child pages.
+
+Wrap the Content: Wrap only the unique body content of each page inside @section('content') and @endsection.
+
+CRITICAL - PREVENT DUPLICATION: You MUST strip out and delete any existing <!DOCTYPE html>, <html>, <head>, <body>, <nav> (header), and <footer> tags from these 7 child pages. They must only contain the middle content. If you leave the nav or footer in the child files, they will duplicate on the screen.
+
+Clean URLs (Remove .html): Search through all 7 files (and app.blade.php if necessary) for any href links pointing to .html files (e.g., href="about.html"). Replace every single one with Laravel's route helper to ensure clean URLs (e.g., href="{{ route('about') }}").
+
+Please output the cleaned-up code for the child pages, ensuring no layout elements from app.blade.php are repeated inside them.
+
+A Quick Tip for Your Laravel Setup
+Make sure your file names end in .blade.php (e.g., blog.blade.php instead of blog.page.php). Laravel's Blade engine relies on that exact extension to properly compile the @extends and @section directives. If it's just .php, the layout inheritance might fail or behave unpredictably.

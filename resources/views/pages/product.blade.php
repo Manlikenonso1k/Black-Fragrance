@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>{{ $product->name }} - Black Fragrance</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="description" content="{{ $product->subtitle ?? '' }}">
-    <link rel="icon" type="image/png" href="/images/faav-icon.png">
-    <base href="/">
-    <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="icomoon/icomoon.css">
-    <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+@extends('layouts.app')
+
+@section('content')
     <style>
         /* Luxury Product Page Styles */
         :root {
@@ -517,90 +500,11 @@
             }
         }
     </style>
-    <script src="js/modernizr.js"></script>
-</head>
-<body>
-
-    <div class="preloader-wrapper">
-        <div class="preloader"></div>
-    </div>
-
-    <div class="search-popup">
-        <div class="search-popup-container">
-            <form role="search" method="get" class="search-form" action="">
-                <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value="" name="s" />
-                <button type="submit" class="search-submit"><a href="#"><i class="icon icon-search"></i></a></button>
-            </form>
-            <h5 class="cat-list-title">Browse Categories</h5>
-            <ul class="cat-list">
-                <li class="cat-list-item"><a href="shop" title="Fragrances">Fragrances</a></li>
-                <li class="cat-list-item"><a href="shop" title="Luxury Scents">Luxury Scents</a></li>
-                <li class="cat-list-item"><a href="shop" title="Unisex">Unisex</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <header id="header">
-        <div id="header-wrap">
-            <nav class="secondary-nav border-bottom">
-                <div class="container">
-                    <div class="row d-flex align-items-center">
-                        <div class="col-md-4 header-contact">
-                            <p>Luxury Fragrances | <strong>+1 (555) 123-4567</strong></p>
-                        </div>
-                        <div class="col-md-4 shipping-purchase text-center">
-                            <p>Free shipping on orders over $150</p>
-                        </div>
-                        <div class="col-md-4 col-sm-12 user-items">
-                            <ul class="d-flex justify-content-end list-unstyled">
-                                <li><a href="login.html"><i class="icon icon-user"></i></a></li>
-                                <li><a href="cart.html"><i class="icon icon-shopping-cart"></i></a></li>
-                                <li><a href="wishlist.html"><i class="icon icon-heart"></i></a></li>
-                                <li class="user-items search-item pe-3">
-                                    <a href="#" class="search-button"><i class="icon icon-search"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <nav class="primary-nav padding-small">
-                <div class="container">
-                    <div class="row d-flex align-items-center">
-                        <div class="col-lg-2 col-md-2">
-                            <div class="main-logo">
-                                <a href="index.html">
-                                    <img src="images/main-logo.png" alt="logo">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-10 col-md-10">
-                            <div class="navbar">
-                                <div id="main-nav" class="stellarnav d-flex justify-content-end right">
-                                    <ul class="menu-list">
-                                        <li class="menu-item has-sub">
-                                            <a href="/" class="item-anchor d-flex align-item-center" data-effect="Home">Home<i class="icon icon-chevron-down"></i></a>
-                                        </li>
-                                        <li><a href="about.html" class="item-anchor" data-effect="About">About</a></li>
-                                        <li class="menu-item has-sub">
-                                            <a href="shop" class="item-anchor active d-flex align-item-center" data-effect="Shop">Shop<i class="icon icon-chevron-down"></i></a>
-                                        </li>
-                                        <li><a href="blog.html" class="item-anchor" data-effect="Blog">Blog</a></li>
-                                        <li><a href="contact.html" class="item-anchor" data-effect="Contact">Contact</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </header>
 
     <div class="container" style="padding: 40px 0;">
         <!-- Breadcrumbs -->
         <div class="breadcrumbs">
-            <a href="/">Home</a> / <a href="/shop">Shop</a> / <span>{{ $product->name }}</span>
+            <a href="{{ route('home') }}">Home</a> / <a href="{{ route('shop') }}">Shop</a> / <span>{{ $product->name }}</span>
         </div>
 
         <!-- Product Hero Section -->
@@ -752,7 +656,7 @@
                 @endphp
                 @forelse ($relatedProducts as $related)
                     <div class="product-card">
-                        <a href="/product/{{ $related->slug }}">
+                        <a href="{{ route('product.show', $related) }}">
                             <img src="{{ $related->image }}" alt="{{ $related->name }}" class="product-card-image">
                             <button class="quick-add-btn" onclick="event.stopPropagation(); quickAdd({{ $related->id }})">Quick Add</button>
                         </a>
@@ -765,45 +669,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer id="footer" style="margin-top: 80px; padding-top: 80px; border-top: 1px solid var(--border-grey);">
-        <div class="container">
-            <div class="row d-flex flex-wrap justify-content-between" style="margin-bottom: 40px;">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <h4 style="font-family: var(--serif); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">Our Mission</h4>
-                    <p style="font-size: 12px; line-height: 1.6; color: var(--dark-grey);">Crafting luxurious fragrances that elevate the everyday experience with elegance and sophistication.</p>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <h4 style="font-family: var(--serif); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">Shop</h4>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li><a href="/shop" style="font-size: 12px; color: var(--dark-grey); text-decoration: none;">All Fragrances</a></li>
-                        <li><a href="/shop" style="font-size: 12px; color: var(--dark-grey); text-decoration: none;">Collections</a></li>
-                        <li><a href="/shop" style="font-size: 12px; color: var(--dark-grey); text-decoration: none;">New Arrivals</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <h4 style="font-family: var(--serif); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">Support</h4>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li><a href="/contact" style="font-size: 12px; color: var(--dark-grey); text-decoration: none;">Contact Us</a></li>
-                        <li><a href="#" style="font-size: 12px; color: var(--dark-grey); text-decoration: none;">Shipping Info</a></li>
-                        <li><a href="#" style="font-size: 12px; color: var(--dark-grey); text-decoration: none;">Returns</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <h4 style="font-family: var(--serif); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">Newsletter</h4>
-                    <form style="display: flex;">
-                        <input type="email" placeholder="Your email" style="flex: 1; padding: 8px; border: 1px solid var(--border-grey); font-size: 12px;">
-                        <button type="submit" style="padding: 8px 16px; background-color: var(--black); color: var(--white); border: none; cursor: pointer; font-size: 12px; font-weight: 600;">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <hr style="margin: 0; border: none; border-top: 1px solid var(--border-grey);">
-        <div style="padding: 20px 0; text-align: center; font-size: 12px; color: var(--dark-grey);">
-            <p>&copy; 2026 Black Fragrance. All rights reserved.</p>
-        </div>
-    </footer>
 
     <script>
         function changeImage(src, element) {
@@ -850,9 +715,4 @@
             alert('Product added to cart! (Coming soon)');
         }
     </script>
-    <script src="js/jquery-1.11.0.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/script.js"></script>
-</body>
-</html>
-</html>
+@endsection
