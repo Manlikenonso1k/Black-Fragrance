@@ -1,3 +1,17 @@
+@php
+  $homeProducts = collect($products ?? [])->values();
+  $homeProductCursor = 0;
+  $nextHomeProductUrl = function () use ($homeProducts, &$homeProductCursor) {
+      if ($homeProducts->isEmpty()) {
+          return route('shop');
+      }
+
+      $product = $homeProducts[$homeProductCursor % $homeProducts->count()];
+      $homeProductCursor++;
+
+      return route('product.show', $product);
+  };
+@endphp
 
     <div class="preloader-wrapper">
       <div class="preloader">
@@ -92,7 +106,7 @@
         <div class="section-header d-flex flex-wrap align-items-center justify-content-between">
           <h2 class="section-title">Featured Products</h2>            
           <div class="btn-wrap">
-            <a href="shop.html" class="d-flex align-items-center">View all products <i class="icon icon icon-arrow-io"></i></a>
+            <a href="{{ route('shop') }}" class="d-flex align-items-center">View all products <i class="icon icon icon-arrow-io"></i></a>
           </div>            
         </div>
         <div class="swiper product-swiper overflow-hidden">
@@ -118,7 +132,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="/product">Full sleeve cover shirt</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Full sleeve cover shirt</a>
                   </h3>
                   <span class="item-price text-primary">₦40.00</span>
                 </div>
@@ -145,7 +159,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="/product">Volunteer Half blue</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Volunteer Half blue</a>
                   </h3>
                   <span class="item-price text-primary">₦38.00</span>
                 </div>
@@ -172,7 +186,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="/product">Double yellow shirt</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Double yellow shirt</a>
                   </h3>
                   <span class="item-price text-primary">₦44.00</span>
                 </div>
@@ -199,7 +213,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="/product">Long belly grey pant</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Long belly grey pant</a>
                   </h3>
                   <span class="item-price text-primary">₦33.00</span>
                 </div>
@@ -319,7 +333,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Half sleeve T-shirt</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Half sleeve T-shirt</a>
                   </h3>
                   <div class="item-price text-primary">₦40.00</div>
                 </div>
@@ -344,7 +358,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Stylish Grey T-shirt</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Stylish Grey T-shirt</a>
                   </h3>
                   <div class="item-price text-primary">₦35.00</div>
                 </div>
@@ -369,7 +383,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Silk White Shirt</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Silk White Shirt</a>
                   </h3>
                   <div class="item-price text-primary">₦35.00</div>
                 </div>
@@ -394,7 +408,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Grunge Hoodie</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Grunge Hoodie</a>
                   </h3>
                   <div class="item-price text-primary">₦30.00</div>
                 </div>
@@ -419,7 +433,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Full sleeve Jeans jacket</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Full sleeve Jeans jacket</a>
                   </h3>
                   <div class="item-price text-primary">₦40.00</div>
                 </div>
@@ -444,7 +458,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Grey Check Coat</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Grey Check Coat</a>
                   </h3>
                   <div class="item-price text-primary">₦30.00</div>
                 </div>
@@ -469,7 +483,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Long Sleeve T-shirt</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Long Sleeve T-shirt</a>
                   </h3>
                   <div class="item-price text-primary">₦40.00</div>
                 </div>
@@ -494,7 +508,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Half Sleeve T-shirt</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Half Sleeve T-shirt</a>
                   </h3>
                   <div class="item-price text-primary">₦35.00</div>
                 </div>
@@ -519,7 +533,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Orange white Nike</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Orange white Nike</a>
                   </h3>
                   <div class="item-price text-primary">₦55.00</div>
                 </div>
@@ -544,7 +558,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Running Shoe</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Running Shoe</a>
                   </h3>
                   <div class="item-price text-primary">₦65.00</div>
                 </div>
@@ -569,7 +583,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Tennis Shoe</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Tennis Shoe</a>
                   </h3>
                   <div class="item-price text-primary">₦80.00</div>
                 </div>
@@ -594,7 +608,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Nike Brand Shoe</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Nike Brand Shoe</a>
                   </h3>
                   <div class="item-price text-primary">₦65.00</div>
                 </div>
@@ -623,7 +637,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Orange white Nike</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Orange white Nike</a>
                   </h3>
                   <div class="item-price text-primary">₦55.00</div>
                 </div>
@@ -648,7 +662,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Running Shoe</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Running Shoe</a>
                   </h3>
                   <div class="item-price text-primary">₦65.00</div>
                 </div>
@@ -673,7 +687,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Tennis Shoe</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Tennis Shoe</a>
                   </h3>
                   <div class="item-price text-primary">₦80.00</div>
                 </div>
@@ -698,7 +712,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Nike Brand Shoe</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Nike Brand Shoe</a>
                   </h3>
                   <div class="item-price text-primary">₦65.00</div>
                 </div>
@@ -727,7 +741,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Silk White Shirt</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Silk White Shirt</a>
                   </h3>
                   <div class="item-price text-primary">₦35.00</div>
                 </div>
@@ -752,7 +766,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">White Half T-shirt</a>
+                    <a href="{{ $nextHomeProductUrl() }}">White Half T-shirt</a>
                   </h3>
                   <div class="item-price text-primary">₦30.00</div>
                 </div>
@@ -777,7 +791,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Ghee Half T-shirt</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Ghee Half T-shirt</a>
                   </h3>
                   <div class="item-price text-primary">₦40.00</div>
                 </div>
@@ -802,7 +816,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Long Sleeve T-shirt</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Long Sleeve T-shirt</a>
                   </h3>
                   <div class="item-price text-primary">₦40.00</div>
                 </div>
@@ -831,7 +845,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Half sleeve T-shirt</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Half sleeve T-shirt</a>
                   </h3>
                   <div class="item-price text-primary">₦40.00</div>
                 </div>
@@ -856,7 +870,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Grunge Hoodie</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Grunge Hoodie</a>
                   </h3>
                   <div class="item-price text-primary">₦30.00</div>
                 </div>
@@ -881,7 +895,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Long Sleeve T-shirt</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Long Sleeve T-shirt</a>
                   </h3>
                   <div class="item-price text-primary">₦40.00</div>
                 </div>
@@ -906,7 +920,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Stylish Grey Pant</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Stylish Grey Pant</a>
                   </h3>
                   <div class="item-price text-primary">₦40.00</div>
                 </div>
@@ -935,7 +949,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">White Hoodie</a>
+                    <a href="{{ $nextHomeProductUrl() }}">White Hoodie</a>
                   </h3>
                   <div class="item-price text-primary">₦40.00</div>
                 </div>
@@ -960,7 +974,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Navy Blue Hoodie</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Navy Blue Hoodie</a>
                   </h3>
                   <div class="item-price text-primary">₦45.00</div>
                 </div>
@@ -985,7 +999,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Dark Green Hoodie</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Dark Green Hoodie</a>
                   </h3>
                   <div class="item-price text-primary">₦35.00</div>
                 </div>
@@ -1014,7 +1028,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Silk White Shirt</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Silk White Shirt</a>
                   </h3>
                   <div class="item-price text-primary">₦35.00</div>
                 </div>
@@ -1039,7 +1053,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Grunge Hoodie</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Grunge Hoodie</a>
                   </h3>
                   <div class="item-price text-primary">₦30.00</div>
                 </div>
@@ -1064,7 +1078,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Grey Check Coat</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Grey Check Coat</a>
                   </h3>
                   <div class="item-price text-primary">₦30.00</div>
                 </div>
@@ -1089,7 +1103,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Long Sleeve T-shirt</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Long Sleeve T-shirt</a>
                   </h3>
                   <div class="item-price text-primary">₦40.00</div>
                 </div>
@@ -1118,7 +1132,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Full Sleeve Jeans Jacket</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Full Sleeve Jeans Jacket</a>
                   </h3>
                   <div class="item-price text-primary">₦40.00</div>
                 </div>
@@ -1143,7 +1157,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Stylish Grey Coat</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Stylish Grey Coat</a>
                   </h3>
                   <div class="item-price text-primary">₦35.00</div>
                 </div>
@@ -1168,7 +1182,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Grey Check Coat</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Grey Check Coat</a>
                   </h3>
                   <div class="item-price text-primary">₦35.00</div>
                 </div>
@@ -1197,7 +1211,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Stylish Women Bag</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Stylish Women Bag</a>
                   </h3>
                   <div class="item-price text-primary">₦35.00</div>
                 </div>
@@ -1222,7 +1236,7 @@
                 </div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Stylish Gadgets</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Stylish Gadgets</a>
                   </h3>
                   <div class="item-price text-primary">₦30.00</div>
                 </div>
@@ -1306,7 +1320,7 @@
                 <div class="discount">10% Off</div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Full sleeve cover shirt</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Full sleeve cover shirt</a>
                   </h3>
                   <div class="item-price text-primary">
                     <del class="prev-price">₦50.00</del>₦40.00
@@ -1334,7 +1348,7 @@
                 <div class="discount">10% Off</div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Long Sleeve T-shirt</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Long Sleeve T-shirt</a>
                   </h3>
                   <div class="item-price text-primary">
                     <del class="prev-price">₦50.00</del>₦40.00
@@ -1362,7 +1376,7 @@
                 <div class="discount">10% Off</div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Grey Check Coat</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Grey Check Coat</a>
                   </h3>
                   <div class="item-price text-primary">
                     <del class="prev-price">₦55.00</del>₦45.00
@@ -1390,7 +1404,7 @@
                 <div class="discount">10% Off</div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Silk White Shirt</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Silk White Shirt</a>
                   </h3>
                   <div class="item-price text-primary">
                     <del class="prev-price">₦45.00</del>₦35.00
@@ -1418,7 +1432,7 @@
                 <div class="discount">10% Off</div>
                 <div class="product-detail">
                   <h3 class="product-title">
-                    <a href="single-product.html">Blue Jeans pant</a>
+                    <a href="{{ $nextHomeProductUrl() }}">Blue Jeans pant</a>
                   </h3>
                   <div class="item-price text-primary">
                     <del class="prev-price">₦45.00</del>₦35.00
@@ -1636,125 +1650,6 @@
       </div>
       <hr>
     </section>
-
-    <footer id="footer">
-      <div class="container">
-        <div class="footer-menu-list">
-          <div class="row d-flex flex-wrap justify-content-between">
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="footer-menu">
-                <h5 class="widget-title">Black Fragrance</h5>
-                <ul class="menu-list list-unstyled">
-                  <li class="menu-item">
-                    <a href="about.html">About us</a>
-                  </li>
-                  <li class="menu-item">
-                    <a href="#">Conditions </a>
-                  </li>
-                  <li class="menu-item">
-                    <a href="blog.html">Our Journals</a>
-                  </li>
-                  <li class="menu-item">
-                    <a href="#">Careers</a>
-                  </li>
-                  <li class="menu-item">
-                    <a href="#">Affiliate Programme</a>
-                  </li>
-                  <li class="menu-item">
-                    <a href="#">Ultras Press</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="footer-menu">
-                <h5 class="widget-title">Customer Service</h5>
-                <ul class="menu-list list-unstyled">
-                  <li class="menu-item">
-                    <a href="faqs.html">FAQ</a>
-                  </li>
-                  <li class="menu-item">
-                    <a href="contact.html">Contact</a>
-                  </li>
-                  <li class="menu-item">
-                    <a href="#">Privacy Policy</a>
-                  </li>
-                  <li class="menu-item">
-                    <a href="#">Returns & Refunds</a>
-                  </li>
-                  <li class="menu-item">
-                    <a href="#">Cookie Guidelines</a>
-                  </li>
-                  <li class="menu-item">
-                    <a href="#">Delivery Information</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="footer-menu">
-                <h5 class="widget-title">Contact Us</h5>
-                <p>Do you have any questions or suggestions? <a href="#" class="email">ourservices@BlackFragrance.com</a>
-                </p>
-                <p>Do you need assistance? Give us a call. <br>
-                  <strong>+57 444 11 00 35</strong>
-                </p>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="footer-menu">
-                <h5 class="widget-title">Forever 2018</h5>
-                <p>Cras mattis sit ornare in metus eu amet adipiscing enim. Ullamcorper in orci, ultrices integer eget arcu. Consectetur leo dignissim lacus, lacus sagittis dictumst.</p>
-                <div class="social-links">
-                  <ul class="d-flex list-unstyled">
-                    <li>
-                      <a href="#">
-                        <i class="icon icon-facebook"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="icon icon-twitter"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="icon icon-youtube-play"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="icon icon-behance-square"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr>
-    </footer>
-
-    <div id="footer-bottom">
-      <div class="container">
-        <div class="d-flex align-items-center flex-wrap justify-content-between">
-          <div class="copyright">
-            <p>Freebies by <a href="https://templatesjungle.com/">Templates Jungle</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a>
-            </p>
-          </div>
-          <div class="payment-method">
-            <p>Payment options :</p>
-            <div class="card-wrap">
-              <img src="images/visa-icon.jpg" alt="visa">
-              <img src="images/mastercard.png" alt="mastercard">
-              <img src="images/american-express.jpg" alt="american-express">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <script src="js/jquery-1.11.0.min.js"></script>
     <script src="js/plugins.js"></script>

@@ -15,23 +15,26 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::updateOrCreate(
-            ['email' => 'test@example.com'],
-            [
-                'name' => 'Test User',
-                'password' => 'password',
-                'is_admin' => false,
-            ]
-        );
+        // Keep local SQLite seeding working even when Filament classes are not installed.
+        if (class_exists('Filament\\Models\\Contracts\\FilamentUser')) {
+            User::updateOrCreate(
+                ['email' => 'test@example.com'],
+                [
+                    'name' => 'Test User',
+                    'password' => 'password',
+                    'is_admin' => false,
+                ]
+            );
 
-        User::updateOrCreate(
-            ['email' => 'admin@blackfragrance.com'],
-            [
-                'name' => 'Admin User',
-                'password' => 'password',
-                'is_admin' => true,
-            ]
-        );
+            User::updateOrCreate(
+                ['email' => 'admin@blackfragrance.com'],
+                [
+                    'name' => 'Admin User',
+                    'password' => 'password',
+                    'is_admin' => true,
+                ]
+            );
+        }
 
         $this->call([
             ProductSeeder::class,

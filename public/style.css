@@ -2818,6 +2818,17 @@ a.blog-categories:hover{
   }
 }
 
+/* Ensure full-width layout on very small phones */
+@media (max-width: 467px) {
+  .container,
+  .container-fluid {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
 /** Categories
 --------------------------------------------------------------*/
 section.categories .category-content{
