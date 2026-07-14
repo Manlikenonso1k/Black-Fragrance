@@ -3,23 +3,29 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
-    
+
     protected static ?string $navigationGroup = 'Users';
+
+    /**
+     * Only super_admin can see the Users menu item.
+     */
+    public static function canAccess(): bool
+    {
+        $user = auth()->user();
+        return $user && $user->isSuperAdmin();
+    }
 
     public static function form(Form $form): Form
     {
@@ -38,9 +44,17 @@ class UserResource extends Resource
                     ->dehydrated(fn ($state) => filled($state))
                     ->required(fn (string $context): bool => $context === 'create')
                     ->maxLength(255),
+                Forms\Components\Select::make('role')
+                    ->options([
+                        User::ROLE_SUPER_ADMIN => 'Super Admin',
+                        User::ROLE_STAFF => 'Staff',
+                    ])
+                    ->required()
+                    ->default(User::ROLE_STAFF),
                 Forms\Components\Toggle::make('is_admin')
-                    ->label('Is Admin')
-                    ->required(),
+                    ->label('Can access admin panel')
+                    ->default(true)
+                    ->helperText('Keep enabled so this user can log into the admin dashboard.'),
             ]);
     }
 
@@ -52,9 +66,18 @@ class UserResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\IconColumn::make('is_admin')
-                    ->boolean()
-                    ->label('Is Admin'),
+                Tables\Columns\TextColumn::make('role')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'super_admin' => 'danger',
+                        'staff' => 'info',
+                        default => 'gray',
+                    })
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                        'super_admin' => 'Super Admin',
+                        'staff' => 'Staff',
+                        default => ucfirst($state),
+                    }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
