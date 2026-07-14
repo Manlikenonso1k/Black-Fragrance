@@ -66,7 +66,8 @@ class ProductResource extends Resource
                                     ->required(),
                                 Forms\Components\FileUpload::make('image')
                                     ->image()
-                                    ->directory('products'),
+                                    ->disk('public_uploads')
+                                    ->directory('images/products'),
                             ]),
                         Forms\Components\Textarea::make('description')
                             ->columnSpanFull(),
@@ -112,7 +113,8 @@ class ProductResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('volume')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image')
+                    ->disk('public_uploads'),
                 Tables\Columns\TextColumn::make('category.name')
                     ->label('Category')
                     ->searchable(),
