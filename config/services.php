@@ -35,4 +35,12 @@ return [
         ],
     ],
 
+    // ── TGI PAY (TGIPAY) ───────────────────────────────────────────────────
+    'tgipay' => [
+        'integration_key' => env('TGIPAY_INTEGRATION_KEY'),
+        'private_key'     => env('TGIPAY_SECRET'),
+        'base_url'        => env('TGIPAY_BASE_URL', 'https://integration-service.tgipay.com/integration/api/v1'),
+        'callback_url'    => env('TGIPAY_CALLBACK_URL', env('APP_URL') . '/tgipay/callback'),
+    ],
+
 ];

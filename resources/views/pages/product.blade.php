@@ -701,8 +701,31 @@
 
         function addToCart(productId) {
             const qty = document.getElementById('quantity').value;
-            console.log('Added to cart:', productId, 'Qty:', qty);
-            alert('Product added to cart! (Coming soon)');
+            // Create and submit a form dynamically
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '{{ route('cart.add') }}';
+            
+            const csrfToken = document.createElement('input');
+            csrfToken.type = 'hidden';
+            csrfToken.name = '_token';
+            csrfToken.value = '{{ csrf_token() }}';
+            form.appendChild(csrfToken);
+
+            const productInput = document.createElement('input');
+            productInput.type = 'hidden';
+            productInput.name = 'product_id';
+            productInput.value = productId;
+            form.appendChild(productInput);
+
+            const qtyInput = document.createElement('input');
+            qtyInput.type = 'hidden';
+            qtyInput.name = 'quantity';
+            qtyInput.value = qty;
+            form.appendChild(qtyInput);
+
+            document.body.appendChild(form);
+            form.submit();
         }
 
         function addToWishlist(productId) {
@@ -711,8 +734,30 @@
         }
 
         function quickAdd(productId) {
-            console.log('Quick add:', productId);
-            alert('Product added to cart! (Coming soon)');
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '{{ route('cart.add') }}';
+            
+            const csrfToken = document.createElement('input');
+            csrfToken.type = 'hidden';
+            csrfToken.name = '_token';
+            csrfToken.value = '{{ csrf_token() }}';
+            form.appendChild(csrfToken);
+
+            const productInput = document.createElement('input');
+            productInput.type = 'hidden';
+            productInput.name = 'product_id';
+            productInput.value = productId;
+            form.appendChild(productInput);
+
+            const qtyInput = document.createElement('input');
+            qtyInput.type = 'hidden';
+            qtyInput.name = 'quantity';
+            qtyInput.value = 1;
+            form.appendChild(qtyInput);
+
+            document.body.appendChild(form);
+            form.submit();
         }
     </script>
 @endsection

@@ -56,6 +56,16 @@ class Product extends Model
         return $this->hasMany(ProductVariant::class);
     }
 
+    public function cartItems()
+    {
+        return $this->hasMany(CartItem::class);
+    }
+
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
     /**
      * Get the route key for implicit route binding.
      */

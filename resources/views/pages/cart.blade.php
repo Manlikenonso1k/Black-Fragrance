@@ -143,6 +143,7 @@
             height: 28px;
             line-height: 1;
             color: var(--mono-gray-700);
+            cursor: pointer;
         }
 
         .qty span {
@@ -151,6 +152,8 @@
             font-size: 12px;
             border-left: 1px solid var(--mono-gray-200);
             border-right: 1px solid var(--mono-gray-200);
+            display: inline-block;
+            line-height: 28px;
         }
 
         .text-link {
@@ -161,6 +164,7 @@
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 0.4px;
+            cursor: pointer;
         }
 
         .save {
@@ -199,6 +203,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             padding: 11px 16px;
+            cursor: pointer;
         }
 
         .ghost-btn {
@@ -361,108 +366,80 @@
 
     <section class="cart-page">
         <div class="container">
+            @if(session('error'))
+                <div style="padding: 10px; background-color: #f8d7da; color: #721c24; margin-bottom: 20px;">
+                    {{ session('error') }}
+                </div>
+            @endif
+            @if(session('success'))
+                <div style="padding: 10px; background-color: #d4edda; color: #155724; margin-bottom: 20px;">
+                    {{ session('success') }}
+                </div>
+            @endif
+
             <div class="cart-grid">
                 <div class="cart-list">
-                    <article class="cart-item">
-                        <img class="cart-thumb" src="images/selling-products4.jpg" alt="Grunge Hoodie">
-                        <div>
-                            <h3>Grunge Hoodie</h3>
-                            <p class="variant">Variant: M / Onyx</p>
-                            <div class="cart-meta">
-                                <span class="price">$30.00</span>
-                                <span class="qty"><button type="button">-</button><span>1</span><button type="button">+</button></span>
-                                <button class="text-link" type="button">Remove</button>
-                                <label class="save"><input type="checkbox"> Save for later</label>
-                            </div>
+                    @if(isset($items) && $items->count() > 0)
+                        @foreach($items as $item)
+                            <article class="cart-item">
+                                <img class="cart-thumb" src="{{ $item->product->image ?? asset('images/selling-products4.jpg') }}" alt="{{ $item->product->name }}">
+                                <div>
+                                    <h3>{{ $item->product->name }}</h3>
+                                    @if($item->variant)
+                                        <p class="variant">Variant: {{ $item->variant->name }}</p>
+                                    @endif
+                                    <div class="cart-meta">
+                                        <span class="price">₦{{ number_format($item->price, 2) }}</span>
+                                        <span class="qty">
+                                            <form action="{{ route('cart.update', $item->id) }}" method="POST" style="display:inline;" id="update-form-{{ $item->id }}">
+                                                @csrf
+                                                <button type="button" onclick="const q=document.getElementById('qty-{{$item->id}}'); if(q.value>1) { q.value--; document.getElementById('update-form-{{ $item->id }}').submit(); }">-</button>
+                                                <input type="hidden" name="quantity" id="qty-{{$item->id}}" value="{{ $item->quantity }}">
+                                                <span>{{ $item->quantity }}</span>
+                                                <button type="button" onclick="const q=document.getElementById('qty-{{$item->id}}'); q.value++; document.getElementById('update-form-{{ $item->id }}').submit();">+</button>
+                                            </form>
+                                        </span>
+                                        <form action="{{ route('cart.remove', $item->id) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="text-link" type="submit">Remove</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </article>
+                        @endforeach
+                    @else
+                        <div style="padding: 40px; text-align: center;">
+                            <h3>Your cart is empty</h3>
+                            <p style="margin-bottom: 20px;">Browse our collections and find something you love.</p>
+                            <a href="{{ route('shop') }}" class="solid-btn" style="display:inline-block;text-align:center;text-decoration:none;width:auto;">Go to Shop</a>
                         </div>
-                    </article>
+                    @endif
 
-                    <article class="cart-item">
-                        <img class="cart-thumb" src="images/selling-products5.jpg" alt="Full Sleeve Jeans Jacket">
-                        <div>
-                            <h3>Full Sleeve Jeans Jacket</h3>
-                            <p class="variant">Variant: L / Graphite</p>
-                            <div class="cart-meta">
-                                <span class="price">$40.00</span>
-                                <span class="qty"><button type="button">-</button><span>1</span><button type="button">+</button></span>
-                                <button class="text-link" type="button">Remove</button>
-                                <label class="save"><input type="checkbox"> Save for later</label>
-                            </div>
+                    @if(isset($items) && $items->count() > 0)
+                        <div class="promo">
+                            <form action="{{ route('cart.clear') }}" method="POST">
+                                @csrf
+                                <button class="ghost-btn" type="submit">Clear Cart</button>
+                            </form>
                         </div>
-                    </article>
-
-                    <article class="cart-item">
-                        <img class="cart-thumb" src="images/selling-products6.jpg" alt="Grey Check Coat">
-                        <div>
-                            <h3>Grey Check Coat</h3>
-                            <p class="variant">Variant: XL / Midnight</p>
-                            <div class="cart-meta">
-                                <span class="price">$30.00</span>
-                                <span class="qty"><button type="button">-</button><span>2</span><button type="button">+</button></span>
-                                <button class="text-link" type="button">Remove</button>
-                                <label class="save"><input type="checkbox"> Save for later</label>
-                            </div>
-                        </div>
-                    </article>
-
-                    <div class="promo">
-                        <input type="text" placeholder="Enter promo code">
-                        <button class="ghost-btn" type="button">Apply</button>
-                    </div>
+                    @endif
                 </div>
 
                 <aside class="summary">
                     <h3>Order Summary</h3>
-                    <div class="summary-row"><span>Subtotal</span><span>$100.00</span></div>
-                    <div class="summary-row"><span>Discounts</span><span>-$10.00</span></div>
-                    <div class="summary-row"><span>Estimated Taxes</span><span>$7.00</span></div>
-                    <div class="summary-row total"><span>Total</span><span>$97.00</span></div>
+                    @if(isset($items) && $items->count() > 0)
+                        <div class="summary-row"><span>Subtotal</span><span>₦{{ number_format($total ?? 0, 2) }}</span></div>
+                        <div class="summary-row"><span>Estimated Taxes</span><span>₦0.00</span></div>
+                        <div class="summary-row total"><span>Total</span><span>₦{{ number_format($total ?? 0, 2) }}</span></div>
 
-                    <div class="shipping">
-                        <label for="zip">ZIP</label>
-                        <input id="zip" type="text" placeholder="100001">
-                        <label for="country" style="margin-top: 10px;">Country</label>
-                        <select id="country">
-                            <option>Nigeria</option>
-                            <option>Ghana</option>
-                            <option>United Kingdom</option>
-                            <option>United States</option>
-                        </select>
-                    </div>
-
-                    <a href="/checkout" class="solid-btn" style="display:inline-block;text-align:center;text-decoration:none;">Proceed to Checkout</a>
+                        <a href="{{ route('checkout') }}" class="solid-btn" style="display:inline-block;text-align:center;text-decoration:none;margin-top:20px;">Proceed to Checkout</a>
+                    @else
+                        <div class="summary-row"><span>Subtotal</span><span>₦0.00</span></div>
+                        <div class="summary-row total"><span>Total</span><span>₦0.00</span></div>
+                    @endif
                 </aside>
             </div>
-
-            <section class="upsell">
-                <h2>You Might Also Like</h2>
-                <div class="upsell-grid">
-                    <div class="upsell-card">
-                        <img src="images/selling-products7.jpg" alt="Long Sleeve T-shirt">
-                        <h4>Long Sleeve T-shirt</h4>
-                        <p>$40.00</p>
-                        <button class="ghost-btn" type="button">Quick Add</button>
-                    </div>
-                    <div class="upsell-card">
-                        <img src="images/selling-products13.jpg" alt="Orange White Nike">
-                        <h4>Orange White Nike</h4>
-                        <p>$55.00</p>
-                        <button class="ghost-btn" type="button">Quick Add</button>
-                    </div>
-                    <div class="upsell-card">
-                        <img src="images/selling-products14.jpg" alt="Running Shoe">
-                        <h4>Running Shoe</h4>
-                        <p>$65.00</p>
-                        <button class="ghost-btn" type="button">Quick Add</button>
-                    </div>
-                    <div class="upsell-card">
-                        <img src="images/selling-products15.jpg" alt="Tennis Shoe">
-                        <h4>Tennis Shoe</h4>
-                        <p>$80.00</p>
-                        <button class="ghost-btn" type="button">Quick Add</button>
-                    </div>
-                </div>
-            </section>
         </div>
     </section>
 @endsection

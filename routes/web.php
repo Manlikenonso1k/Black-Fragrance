@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\PaymentController;
 use App\Models\Product;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +21,28 @@ Route::get('/', function () {
 Route::view('/about', 'pages.about')->name('about');
 Route::view('/blog', 'pages.blog')->name('blog');
 Route::view('/contact', 'pages.contact')->name('contact');
-Route::view('/cart', 'pages.cart')->name('cart');
+
+// --- CART ROUTES ---
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/{cartItem}/update', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/{cartItem}/remove', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+
+// --- CHECKOUT ROUTES ---
+Route::get('/checkout', [CheckoutController::class, 'show'])->name('checkout');
+Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('checkout.process');
+Route::get('/order/{order}/success', [CheckoutController::class, 'success'])->name('order.success');
+
+// --- PAYMENT ROUTES ---
+Route::get('/checkout/pay/tgipay/{order}', [PaymentController::class, 'initiateTgiPay'])->name('payment.tgipay.initiate');
+Route::any('/tgipay/callback', [PaymentController::class, 'tgiPayCallback'])
+    ->name('tgipay.callback')
+    ->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
+Route::post('/webhooks/tgi', [PaymentController::class, 'tgiPayWebhook'])
+    ->name('tgipay.webhook')
+    ->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
+
 Route::get('/shop', function () {
     if (! Schema::hasTable('products')) {
         return view('pages.shop', ['products' => collect()]);
