@@ -110,6 +110,16 @@
             </div>
             <div class="col-md-4 col-sm-12 user-items">
               <ul class="d-flex justify-content-end list-unstyled">
+                <li style="margin-right: 15px; position: relative;">
+                  <form action="{{ route('currency.set') }}" method="POST" id="currency-form-header" style="margin:0;">
+                    @csrf
+                    <select name="currency" onchange="document.getElementById('currency-form-header').submit()" style="border: none; background: transparent; font-size: 13px; font-weight: 600; cursor: pointer; outline: none; padding: 0;">
+                      <option value="NGN" {{ session('currency', 'NGN') === 'NGN' ? 'selected' : '' }}>NGN ₦</option>
+                      <option value="USD" {{ session('currency') === 'USD' ? 'selected' : '' }}>USD $</option>
+                      <option value="EUR" {{ session('currency') === 'EUR' ? 'selected' : '' }}>EUR €</option>
+                    </select>
+                  </form>
+                </li>
                 <li>
                   <a href="/login">
                     <i class="icon icon-user"></i>
@@ -355,6 +365,64 @@
   <script src="/js/jquery-1.11.0.min.js"></script>
   <script src="/js/plugins.js"></script>
   <script src="/js/script.js"></script>
+
+  <div id="currency-suggestion-toast" style="display: none; position: fixed; bottom: 20px; left: 20px; background: #000; color: #fff; padding: 15px 20px; border-radius: 8px; z-index: 9999; box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-family: 'Inter', sans-serif;">
+    <p style="margin: 0 0 10px; font-size: 14px;">We noticed you are in <span id="user-country-name"></span>. Would you like to view prices in <span id="suggested-currency-name"></span>?</p>
+    <div style="display: flex; gap: 10px;">
+      <button onclick="acceptCurrencySuggestion()" style="background: #fff; color: #000; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: 600;">Yes, switch to <span id="suggested-currency-code"></span></button>
+      <button onclick="dismissCurrencySuggestion()" style="background: transparent; color: #fff; border: 1px solid #fff; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;">No, thanks</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if user has already made a currency choice or dismissed the popup
+      if (!localStorage.getItem('currency_suggested') && '{{ session()->has("currency") ? "1" : "" }}' !== '1') {
+        fetch('https://ipapi.co/json/')
+          .then(res => res.json())
+          .then(data => {
+            let suggestedCurrency = null;
+            if (data.country_code && data.country_code !== 'NG') {
+              if (data.continent_code === 'EU') {
+                suggestedCurrency = 'EUR';
+              } else {
+                suggestedCurrency = 'USD';
+              }
+            }
+
+            if (suggestedCurrency && suggestedCurrency !== '{{ session("currency", "NGN") }}') {
+              document.getElementById('user-country-name').innerText = data.country_name;
+              document.getElementById('suggested-currency-name').innerText = suggestedCurrency;
+              document.getElementById('suggested-currency-code').innerText = suggestedCurrency;
+              document.getElementById('currency-suggestion-toast').style.display = 'block';
+              
+              window.suggestedCurrencyToSet = suggestedCurrency;
+            }
+          })
+          .catch(err => console.log('Geolocation failed', err));
+      }
+    });
+
+    function acceptCurrencySuggestion() {
+      fetch('{{ route("currency.set") }}', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': '{{ csrf_token() }}',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({ currency: window.suggestedCurrencyToSet })
+      }).then(() => {
+        localStorage.setItem('currency_suggested', 'true');
+        window.location.reload();
+      });
+    }
+
+    function dismissCurrencySuggestion() {
+      localStorage.setItem('currency_suggested', 'true');
+      document.getElementById('currency-suggestion-toast').style.display = 'none';
+    }
+  </script>
 </body>
 
 </html>

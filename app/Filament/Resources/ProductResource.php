@@ -109,7 +109,7 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('subtitle')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('price')
-                    ->money()
+                    ->money('NGN')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('volume')
                     ->searchable(),

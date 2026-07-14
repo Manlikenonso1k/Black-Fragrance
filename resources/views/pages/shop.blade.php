@@ -57,7 +57,7 @@
                         <h3 class="product-title">
                           <a href="/product/{{ $product->slug }}">{{ $product->name }}</a>
                         </h3>
-                        <div class="item-price text-primary">₦{{ number_format($product->price, 2) }}</div>
+                        <div class="item-price text-primary">{{ \App\Helpers\CurrencyHelper::formatPrice($product->price) }}</div>
                       </div>
                     </div>
                     @empty

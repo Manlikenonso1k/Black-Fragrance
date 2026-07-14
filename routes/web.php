@@ -22,6 +22,10 @@ Route::view('/about', 'pages.about')->name('about');
 Route::view('/blog', 'pages.blog')->name('blog');
 Route::view('/contact', 'pages.contact')->name('contact');
 
+use App\Http\Controllers\CurrencyController;
+
+Route::post('/set-currency', [CurrencyController::class, 'setCurrency'])->name('currency.set');
+
 // --- CART ROUTES ---
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');

@@ -530,7 +530,7 @@
 
                 <!-- Price Section -->
                 <div class="price-section">
-                    <div class="price">₦{{ number_format($product->price, 2) }}</div>
+                    <div class="price">{{ \App\Helpers\CurrencyHelper::formatPrice($product->price) }}</div>
                     <div class="stock-status {{ $product->in_stock ? 'in-stock' : '' }}">
                         {{ $product->in_stock ? 'In Stock' : 'Out of Stock' }}
                     </div>
@@ -562,9 +562,9 @@
                 <!-- Add to Cart Section -->
                 <div class="add-to-cart-section">
                     <div class="quantity-input">
-                        <button onclick="decrementQty()">−</button>
+                        <button type="button" onclick="decrementQty()">−</button>
                         <input type="number" id="quantity" value="1" min="1">
-                        <button onclick="incrementQty()">+</button>
+                        <button type="button" onclick="incrementQty()">+</button>
                     </div>
                     <button class="add-to-cart-btn" onclick="addToCart({{ $product->id }})">Add to Cart</button>
                     <button class="wishlist-btn" onclick="addToWishlist({{ $product->id }})" title="Add to Wishlist">
@@ -661,7 +661,7 @@
                             <button class="quick-add-btn" onclick="event.stopPropagation(); quickAdd({{ $related->id }})">Quick Add</button>
                         </a>
                         <h3 class="product-card-name">{{ $related->name }}</h3>
-                        <p class="product-card-price">₦{{ number_format($related->price, 2) }}</p>
+                        <p class="product-card-price">{{ \App\Helpers\CurrencyHelper::formatPrice($related->price) }}</p>
                     </div>
                 @empty
                     <p>No other products available.</p>
@@ -684,13 +684,15 @@
 
         function incrementQty() {
             const input = document.getElementById('quantity');
-            input.value = parseInt(input.value) + 1;
+            let val = parseInt(input.value) || 1;
+            input.value = val + 1;
         }
 
         function decrementQty() {
             const input = document.getElementById('quantity');
-            if (parseInt(input.value) > 1) {
-                input.value = parseInt(input.value) - 1;
+            let val = parseInt(input.value) || 1;
+            if (val > 1) {
+                input.value = val - 1;
             }
         }
 

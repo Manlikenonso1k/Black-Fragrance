@@ -263,7 +263,7 @@
                         <textarea id="notes" name="notes">{{ old('notes') }}</textarea>
                     </div>
                     
-                    <button type="submit" class="solid-btn" style="font-size: 14px;">Pay ₦{{ number_format($total ?? 0, 2) }} with TGI Pay</button>
+                    <button type="submit" class="solid-btn" style="font-size: 14px;">Pay {{ \App\Helpers\CurrencyHelper::formatPrice($total ?? 0) }} with TGI Pay</button>
                 </form>
             </div>
 
@@ -277,15 +277,15 @@
                             <div class="summary-item-details">
                                 <h4>{{ $item->product->name }}</h4>
                                 <p>Qty: {{ $item->quantity }} @if($item->variant) | {{ $item->variant->name }} @endif</p>
-                                <p style="font-weight: 600; color: var(--mono-black); margin-top: 4px;">₦{{ number_format($item->price, 2) }}</p>
+                                <p style="font-weight: 600; color: var(--mono-black); margin-top: 4px;">{{ \App\Helpers\CurrencyHelper::formatPrice($item->price) }}</p>
                             </div>
                         </div>
                     @endforeach
                 </div>
                 
-                <div class="summary-row"><span>Subtotal</span><span>₦{{ number_format($total ?? 0, 2) }}</span></div>
+                <div class="summary-row"><span>Subtotal</span><span>{{ \App\Helpers\CurrencyHelper::formatPrice($total ?? 0) }}</span></div>
                 <div class="summary-row"><span>Shipping</span><span>Calculated at next step</span></div>
-                <div class="summary-row total"><span>Total</span><span>₦{{ number_format($total ?? 0, 2) }}</span></div>
+                <div class="summary-row total"><span>Total</span><span>{{ \App\Helpers\CurrencyHelper::formatPrice($total ?? 0) }}</span></div>
             </aside>
         </div>
     </div>

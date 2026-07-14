@@ -389,7 +389,7 @@
                                         <p class="variant">Variant: {{ $item->variant->name }}</p>
                                     @endif
                                     <div class="cart-meta">
-                                        <span class="price">₦{{ number_format($item->price, 2) }}</span>
+                                        <span class="price">{{ \App\Helpers\CurrencyHelper::formatPrice($item->price) }}</span>
                                         <span class="qty">
                                             <form action="{{ route('cart.update', $item->id) }}" method="POST" style="display:inline;" id="update-form-{{ $item->id }}">
                                                 @csrf
@@ -429,14 +429,14 @@
                 <aside class="summary">
                     <h3>Order Summary</h3>
                     @if(isset($items) && $items->count() > 0)
-                        <div class="summary-row"><span>Subtotal</span><span>₦{{ number_format($total ?? 0, 2) }}</span></div>
-                        <div class="summary-row"><span>Estimated Taxes</span><span>₦0.00</span></div>
-                        <div class="summary-row total"><span>Total</span><span>₦{{ number_format($total ?? 0, 2) }}</span></div>
+                        <div class="summary-row"><span>Subtotal</span><span>{{ \App\Helpers\CurrencyHelper::formatPrice($total ?? 0) }}</span></div>
+                        <div class="summary-row"><span>Estimated Taxes</span><span>{{ \App\Helpers\CurrencyHelper::formatPrice(0) }}</span></div>
+                        <div class="summary-row total"><span>Total</span><span>{{ \App\Helpers\CurrencyHelper::formatPrice($total ?? 0) }}</span></div>
 
                         <a href="{{ route('checkout') }}" class="solid-btn" style="display:inline-block;text-align:center;text-decoration:none;margin-top:20px;">Proceed to Checkout</a>
                     @else
-                        <div class="summary-row"><span>Subtotal</span><span>₦0.00</span></div>
-                        <div class="summary-row total"><span>Total</span><span>₦0.00</span></div>
+                        <div class="summary-row"><span>Subtotal</span><span>{{ \App\Helpers\CurrencyHelper::formatPrice(0) }}</span></div>
+                        <div class="summary-row total"><span>Total</span><span>{{ \App\Helpers\CurrencyHelper::formatPrice(0) }}</span></div>
                     @endif
                 </aside>
             </div>
