@@ -31,6 +31,9 @@ class Product extends Model
         'stock',
         'in_stock',
         'is_variable',
+        'is_featured',
+        'is_best_selling',
+        'is_flash_sale',
     ];
 
     /**
@@ -42,6 +45,9 @@ class Product extends Model
         'images' => 'array',
         'colors' => 'array',
         'is_variable' => 'boolean',
+        'is_featured' => 'boolean',
+        'is_best_selling' => 'boolean',
+        'is_flash_sale' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];

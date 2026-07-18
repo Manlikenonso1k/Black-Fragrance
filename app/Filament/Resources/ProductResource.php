@@ -79,6 +79,18 @@ class ProductResource extends Resource
                                     ->helperText('Store color swatches as JSON array of hex values.'),
                             ]),
                     ]),
+                Forms\Components\Section::make('Showcase')
+                    ->schema([
+                        Forms\Components\Grid::make(3)
+                            ->schema([
+                                Forms\Components\Toggle::make('is_featured')
+                                    ->label('Featured Product'),
+                                Forms\Components\Toggle::make('is_best_selling')
+                                    ->label('Best Selling'),
+                                Forms\Components\Toggle::make('is_flash_sale')
+                                    ->label('Flash Sale'),
+                            ]),
+                    ]),
                 Forms\Components\Section::make('Scent Notes')
                     ->schema([
                         Forms\Components\Textarea::make('top_notes')
@@ -121,6 +133,15 @@ class ProductResource extends Resource
                 Tables\Columns\IconColumn::make('is_variable')
                     ->boolean()
                     ->label('Variable'),
+                Tables\Columns\IconColumn::make('is_featured')
+                    ->boolean()
+                    ->label('Featured'),
+                Tables\Columns\IconColumn::make('is_best_selling')
+                    ->boolean()
+                    ->label('Best Selling'),
+                Tables\Columns\IconColumn::make('is_flash_sale')
+                    ->boolean()
+                    ->label('Flash Sale'),
                 Tables\Columns\TextColumn::make('stock')
                     ->numeric()
                     ->sortable(),
