@@ -10,11 +10,17 @@ use Illuminate\Support\Facades\Schema;
 
 Route::get('/', function () {
     if (! Schema::hasTable('products')) {
-        return view('pages.index', ['products' => collect()]);
+        return view('pages.index', [
+            'featuredProducts' => collect(),
+            'bestSellingProducts' => collect(),
+            'flashSaleProducts' => collect(),
+        ]);
     }
 
     return view('pages.index', [
-        'products' => Product::query()->where('in_stock', true)->get(),
+        'featuredProducts' => Product::query()->where('is_featured', true)->where('in_stock', true)->get(),
+        'bestSellingProducts' => Product::query()->where('is_best_selling', true)->where('in_stock', true)->get(),
+        'flashSaleProducts' => Product::query()->where('is_flash_sale', true)->where('in_stock', true)->get(),
     ]);
 })->name('home');
 
