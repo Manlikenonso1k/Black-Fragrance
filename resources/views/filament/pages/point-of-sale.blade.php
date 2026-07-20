@@ -1,5 +1,17 @@
 <x-filament-panels::page>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div x-data="{}" x-on:print-receipt.window="setTimeout(() => window.print(), 500)">
+        <style>
+            @media print {
+                @page { size: 80mm auto; margin: 0; }
+                body { margin: 0; padding: 10px; font-family: monospace; color: #000; background: #fff; }
+                .fi-sidebar, .fi-topbar, .fi-header { display: none !important; }
+                .fi-main { padding: 0 !important; margin: 0 !important; }
+                #pos-ui-container { display: none !important; }
+                #pos-receipt-container { display: block !important; }
+            }
+        </style>
+        
+        <div id="pos-ui-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         <!-- Left/Main Side: Categories and Products -->
         <div class="md:col-span-2 space-y-6">
@@ -138,6 +150,54 @@
                 @endif
             </div>
         </div>
+
+        </div>
+
+        <!-- Thermal Receipt (Visible only when printing) -->
+        @if($lastOrder)
+        <div id="pos-receipt-container" class="hidden font-mono text-black">
+            <div class="text-center mb-4">
+                <h2 class="text-xl font-bold uppercase mb-1">Black Fragrance</h2>
+                <p class="text-xs">{{ $lastOrder->created_at->format('d/m/Y h:i A') }}</p>
+                <p class="text-xs">Order: {{ $lastOrder->order_number }}</p>
+            </div>
+            
+            <table class="w-full text-xs mb-4">
+                <thead>
+                    <tr class="border-b border-black border-dashed">
+                        <th class="text-left py-1">Item</th>
+                        <th class="text-center py-1">Qty</th>
+                        <th class="text-right py-1">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($lastOrder->items as $item)
+                        <tr>
+                            <td class="py-1 pr-1 truncate max-w-[40mm]">{{ $item->product->name ?? 'Unknown' }}</td>
+                            <td class="text-center py-1">{{ $item->quantity }}</td>
+                            <td class="text-right py-1">₦{{ number_format($item->price * $item->quantity) }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            
+            <div class="border-t border-black border-dashed pt-2 mb-4 text-sm">
+                <div class="flex justify-between">
+                    <span>Subtotal</span>
+                    <span>₦{{ number_format($lastOrder->subtotal) }}</span>
+                </div>
+                <div class="flex justify-between font-bold mt-1 text-base">
+                    <span>TOTAL</span>
+                    <span>₦{{ number_format($lastOrder->total) }}</span>
+                </div>
+            </div>
+            
+            <div class="text-center text-xs mt-4">
+                Thank you for shopping with us!<br>
+                visit www.blackfragrance.com.ng
+            </div>
+        </div>
+        @endif
 
     </div>
 </x-filament-panels::page>

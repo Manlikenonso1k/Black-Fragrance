@@ -27,6 +27,7 @@ class PointOfSale extends Page
     public $viewMode = 'categories';
     public $search = '';
     public $cart = [];
+    public ?Order $lastOrder = null;
 
     #[Computed]
     public function categories()
@@ -165,11 +166,14 @@ class PointOfSale extends Page
             }
         }
 
+        $this->lastOrder = Order::with('items.product')->find($order->id);
         $this->cart = [];
         
         Notification::make()
             ->title('Sale completed successfully')
             ->success()
             ->send();
+
+        $this->dispatch('print-receipt');
     }
 }
