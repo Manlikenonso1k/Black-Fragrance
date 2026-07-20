@@ -5,7 +5,7 @@
         <div class="md:col-span-2 space-y-6">
             
             <!-- Search (Floating) -->
-            <div class="fixed md:sticky top-16 md:top-24 left-0 right-0 md:left-auto md:right-auto mx-auto w-[90%] md:w-full max-w-xl md:max-w-none z-50 md:z-40 backdrop-blur-md bg-white/80 dark:bg-gray-900/80 shadow-lg md:shadow-sm rounded-xl p-2 border dark:border-gray-800">
+            <div class="fixed md:sticky top-10 md:top-14 left-0 right-0 md:left-auto md:right-auto mx-auto w-[90%] md:w-full max-w-xl md:max-w-none z-50 md:z-40 backdrop-blur-md bg-white/80 dark:bg-gray-900/80 shadow-lg md:shadow-sm rounded-xl p-2 border dark:border-gray-800">
                 <x-filament::input.wrapper>
                     <x-filament::input
                         type="text"
