@@ -103,6 +103,9 @@ class PaymentController extends Controller
                 Cart::where('session_id', session()->getId())->delete();
             }
 
+            // Deduct stock
+            $this->deductStock($order);
+
             // TODO: Trigger order confirmation email
         }
 
@@ -147,9 +150,29 @@ class PaymentController extends Controller
                 // Background process, session isn't available for guest carts, but the order is marked paid.
             }
 
+            // Deduct stock
+            $this->deductStock($order);
+
             // TODO: Trigger order confirmation email
         }
 
         return response()->json(['message' => 'Webhook processed successfully'], 200);
+    }
+
+    /**
+     * Deduct global stock based on order items.
+     */
+    protected function deductStock(Order $order)
+    {
+        foreach ($order->items as $item) {
+            $product = $item->product;
+            if ($product) {
+                $newStock = max(0, $product->stock - $item->quantity);
+                $product->update([
+                    'stock' => $newStock,
+                    'in_stock' => $newStock > 0,
+                ]);
+            }
+        }
     }
 }

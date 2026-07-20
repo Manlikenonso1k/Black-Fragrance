@@ -28,7 +28,19 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => [
+                    50 => '#fafafa',
+                    100 => '#f4f4f5',
+                    200 => '#e4e4e7',
+                    300 => '#d4d4d8',
+                    400 => '#ffffff', // Dark mode accent (white)
+                    500 => '#71717a',
+                    600 => '#000000', // Light mode accent (black)
+                    700 => '#3f3f46',
+                    800 => '#27272a',
+                    900 => '#18181b',
+                    950 => '#09090b',
+                ],
             ])
             ->favicon(asset('images/faav-icon.png'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')

@@ -35,6 +35,10 @@ class CategoryResource extends Resource
                     ->required()
                     ->unique(ignoreRecord: true)
                     ->maxLength(255),
+                Forms\Components\FileUpload::make('image')
+                    ->image()
+                    ->disk('public_uploads')
+                    ->directory('images/categories'),
                 Forms\Components\Textarea::make('description')
                     ->columnSpanFull(),
             ]);
@@ -44,6 +48,8 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('image')
+                    ->disk('public_uploads'),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
