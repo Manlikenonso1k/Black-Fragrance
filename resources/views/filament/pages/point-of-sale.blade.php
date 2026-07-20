@@ -2,7 +2,7 @@
     <div x-data="{}" x-on:print-receipt.window="setTimeout(() => window.print(), 500)">
         <style>
             @media print {
-                @page { size: 80mm auto; margin: 0; }
+                @page { size: 56mm auto; margin: 0; }
                 body { margin: 0; padding: 10px; font-family: monospace; color: #000; background: #fff; }
                 .fi-sidebar, .fi-topbar, .fi-header { display: none !important; }
                 .fi-main { padding: 0 !important; margin: 0 !important; }
