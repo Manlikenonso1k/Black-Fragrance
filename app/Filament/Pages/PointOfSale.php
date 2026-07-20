@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\Auth;
 use Filament\Notifications\Notification;
+use Livewire\Attributes\Computed;
 
 class PointOfSale extends Page
 {
@@ -26,12 +27,14 @@ class PointOfSale extends Page
     public $search = '';
     public $cart = [];
 
-    public function getCategoriesProperty()
+    #[Computed]
+    public function categories()
     {
         return Category::withCount('products')->get();
     }
 
-    public function getProductsProperty()
+    #[Computed]
+    public function products()
     {
         $query = Product::query()->where('in_stock', true);
         
@@ -106,7 +109,8 @@ class PointOfSale extends Page
         unset($this->cart[$productId]);
     }
 
-    public function getCartTotalProperty()
+    #[Computed]
+    public function cartTotal()
     {
         return collect($this->cart)->sum(fn($item) => $item['price'] * $item['quantity']);
     }
