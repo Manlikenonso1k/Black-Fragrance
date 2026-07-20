@@ -131,7 +131,7 @@ class PointOfSale extends Page
             'tax' => 0,
             'shipping' => 0,
             'total' => $total,
-            'status' => 'completed',
+            'status' => 'delivered',
             'payment_status' => 'success',
             'payment_gateway' => 'pos',
             'first_name' => 'In-Store',
