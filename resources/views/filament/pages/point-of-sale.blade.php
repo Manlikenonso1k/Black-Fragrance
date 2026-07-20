@@ -4,8 +4,8 @@
         <!-- Left/Main Side: Categories and Products -->
         <div class="md:col-span-2 space-y-6">
             
-            <!-- Search -->
-            <div>
+            <!-- Search (Floating) -->
+            <div class="sticky top-4 z-10 backdrop-blur-md bg-white/70 dark:bg-gray-900/70 shadow-sm rounded-xl p-2 border dark:border-gray-800">
                 <x-filament::input.wrapper>
                     <x-filament::input
                         type="text"
@@ -16,68 +16,75 @@
             </div>
 
             <!-- Categories -->
-            <div>
-                <h3 class="text-lg font-medium mb-3">Categories</h3>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                    @foreach($this->categories as $category)
-                        <div 
-                            wire:click="selectCategory({{ $category->id }})"
-                            class="cursor-pointer border rounded-lg p-3 flex flex-col items-center justify-center gap-2 transition-colors {{ $selectedCategory === $category->id ? 'bg-primary-500/10 border-primary-500 ring-2 ring-primary-500' : 'bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700' }}"
-                        >
-                            @if($category->image)
-                                <img src="{{ Storage::disk('public_uploads')->url($category->image) }}" class="w-12 h-12 rounded object-cover" />
-                            @else
-                                <div class="w-12 h-12 rounded bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-400">
-                                    <x-heroicon-o-photo class="w-6 h-6" />
-                                </div>
-                            @endif
-                            <span class="text-sm font-medium text-center">{{ $category->name }}</span>
-                            <span class="text-xs text-gray-500">{{ $category->products_count }} items</span>
-                        </div>
-                    @endforeach
-                </div>
-                @if($this->categories->whereNull('image')->count() > 0)
-                    <p class="text-xs text-gray-500 mt-2">Tip: You can add images to categories in the <a href="{{ route('filament.admin.resources.categories.index') }}" class="text-primary-600 underline">Categories page</a>.</p>
-                @endif
-            </div>
-
-            <!-- Products -->
-            <div>
-                <div class="flex items-center justify-between mb-3">
-                    <h3 class="text-lg font-medium">Products</h3>
-                    @if($selectedCategory)
-                        <button wire:click="selectCategory(null)" class="text-sm text-primary-600 hover:underline">Clear Category Filter</button>
+            @if($viewMode === 'categories')
+                <div>
+                    <h3 class="text-lg font-medium mb-3">Categories</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                        @foreach($this->categories as $category)
+                            <div 
+                                wire:click="selectCategory({{ $category->id }})"
+                                class="cursor-pointer border rounded-lg p-3 flex flex-col items-center justify-center gap-2 transition-colors bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700"
+                            >
+                                @if($category->image)
+                                    <img src="{{ Storage::disk('public_uploads')->url($category->image) }}" class="w-12 h-12 rounded object-cover" />
+                                @else
+                                    <div class="w-12 h-12 rounded bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-400">
+                                        <x-heroicon-o-photo class="w-6 h-6" />
+                                    </div>
+                                @endif
+                                <span class="text-sm font-medium text-center">{{ $category->name }}</span>
+                                <span class="text-xs text-gray-500">{{ $category->products_count }} items</span>
+                            </div>
+                        @endforeach
+                    </div>
+                    @if($this->categories->whereNull('image')->count() > 0)
+                        <p class="text-xs text-gray-500 mt-2">Tip: You can add images to categories in the <a href="{{ route('filament.admin.resources.categories.index') }}" class="text-primary-600 underline">Categories page</a>.</p>
                     @endif
                 </div>
-                
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    @forelse($this->products as $product)
-                        <div 
-                            wire:click="addToCart({{ $product->id }})"
-                            class="cursor-pointer bg-white dark:bg-gray-800 border rounded-lg overflow-hidden hover:ring-2 hover:ring-primary-500 transition-all flex flex-col"
-                        >
-                            <div class="h-32 bg-gray-100 dark:bg-gray-700 flex items-center justify-center relative">
-                                @if($product->image)
-                                    <img src="{{ Storage::disk('public_uploads')->url($product->image) }}" class="w-full h-full object-cover" />
-                                @else
-                                    <x-heroicon-o-cube class="w-8 h-8 text-gray-400" />
-                                @endif
-                                <div class="absolute top-2 right-2 bg-white dark:bg-gray-800 rounded px-2 py-1 text-xs font-bold shadow">
-                                    ₦{{ number_format($product->price) }}
+            @endif
+
+            <!-- Products -->
+            @if($viewMode === 'products')
+                <div>
+                    <div class="flex items-center justify-between mb-4 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg border dark:border-gray-700">
+                        <div class="flex items-center gap-3">
+                            <button wire:click="backToCategories" class="flex items-center gap-1 text-sm font-medium px-3 py-1.5 bg-white dark:bg-gray-700 border dark:border-gray-600 rounded-md shadow-sm hover:bg-gray-100 dark:hover:bg-gray-600 transition">
+                                <x-heroicon-o-arrow-left class="w-4 h-4" />
+                                Back to Categories
+                            </button>
+                            <h3 class="text-lg font-medium">Products</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        @forelse($this->products as $product)
+                            <div 
+                                wire:click="addToCart({{ $product->id }})"
+                                class="cursor-pointer bg-white dark:bg-gray-800 border rounded-lg overflow-hidden hover:ring-2 hover:ring-primary-500 transition-all flex flex-col"
+                            >
+                                <div class="h-32 bg-gray-100 dark:bg-gray-700 flex items-center justify-center relative">
+                                    @if($product->image)
+                                        <img src="{{ Storage::disk('public_uploads')->url($product->image) }}" class="w-full h-full object-cover" />
+                                    @else
+                                        <x-heroicon-o-cube class="w-8 h-8 text-gray-400" />
+                                    @endif
+                                    <div class="absolute top-2 right-2 bg-white dark:bg-gray-800 rounded px-2 py-1 text-xs font-bold shadow">
+                                        ₦{{ number_format($product->price) }}
+                                    </div>
+                                </div>
+                                <div class="p-3">
+                                    <h4 class="font-medium text-sm line-clamp-2">{{ $product->name }}</h4>
+                                    <p class="text-xs text-gray-500 mt-1">Stock: {{ $product->stock }}</p>
                                 </div>
                             </div>
-                            <div class="p-3">
-                                <h4 class="font-medium text-sm line-clamp-2">{{ $product->name }}</h4>
-                                <p class="text-xs text-gray-500 mt-1">Stock: {{ $product->stock }}</p>
+                        @empty
+                            <div class="col-span-full py-8 text-center text-gray-500">
+                                No products found.
                             </div>
-                        </div>
-                    @empty
-                        <div class="col-span-full py-8 text-center text-gray-500">
-                            No products found.
-                        </div>
-                    @endforelse
+                        @endforelse
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
 
         <!-- Right Side: Cart / Current Sale -->

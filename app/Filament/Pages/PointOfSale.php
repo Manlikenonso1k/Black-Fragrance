@@ -24,6 +24,7 @@ class PointOfSale extends Page
     protected static ?string $title = 'Point of Sale';
 
     public $selectedCategory = null;
+    public $viewMode = 'categories';
     public $search = '';
     public $cart = [];
 
@@ -51,11 +52,14 @@ class PointOfSale extends Page
 
     public function selectCategory($categoryId)
     {
-        if ($this->selectedCategory === $categoryId) {
-            $this->selectedCategory = null;
-        } else {
-            $this->selectedCategory = $categoryId;
-        }
+        $this->selectedCategory = $categoryId;
+        $this->viewMode = 'products';
+    }
+
+    public function backToCategories()
+    {
+        $this->selectedCategory = null;
+        $this->viewMode = 'categories';
     }
 
     public function addToCart($productId)
