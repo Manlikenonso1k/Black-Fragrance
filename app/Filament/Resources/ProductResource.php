@@ -12,6 +12,8 @@ use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Notifications\Notification;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Str;
 
 class ProductResource extends Resource
@@ -64,6 +66,9 @@ class ProductResource extends Resource
                                     ->default(0),
                                 Forms\Components\Toggle::make('in_stock')
                                     ->required(),
+                                Forms\Components\Toggle::make('is_displayed')
+                                    ->label('Display on Store')
+                                    ->helperText('Show this product on the public-facing shop pages.'),
                                 Forms\Components\FileUpload::make('image')
                                     ->image()
                                     ->disk('public_uploads')
@@ -147,6 +152,13 @@ class ProductResource extends Resource
                     ->sortable(),
                 Tables\Columns\IconColumn::make('in_stock')
                     ->boolean(),
+                Tables\Columns\IconColumn::make('is_displayed')
+                    ->label('Displayed')
+                    ->boolean()
+                    ->trueIcon('heroicon-o-eye')
+                    ->falseIcon('heroicon-o-eye-slash')
+                    ->trueColor('success')
+                    ->falseColor('danger'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -165,6 +177,34 @@ class ProductResource extends Resource
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\BulkAction::make('showcase')
+                        ->label('Showcase (Display)')
+                        ->icon('heroicon-o-eye')
+                        ->color('success')
+                        ->requiresConfirmation()
+                        ->deselectRecordsAfterCompletion()
+                        ->action(function (Collection $records): void {
+                            $records->each(fn (Product $product) => $product->update(['is_displayed' => true]));
+                            Notification::make()
+                                ->title('Products displayed')
+                                ->body($records->count() . ' product(s) are now visible on the store.')
+                                ->success()
+                                ->send();
+                        }),
+                    Tables\Actions\BulkAction::make('hide')
+                        ->label('Hide from Store')
+                        ->icon('heroicon-o-eye-slash')
+                        ->color('danger')
+                        ->requiresConfirmation()
+                        ->deselectRecordsAfterCompletion()
+                        ->action(function (Collection $records): void {
+                            $records->each(fn (Product $product) => $product->update(['is_displayed' => false]));
+                            Notification::make()
+                                ->title('Products hidden')
+                                ->body($records->count() . ' product(s) are now hidden from the store.')
+                                ->warning()
+                                ->send();
+                        }),
                 ]),
             ]);
     }

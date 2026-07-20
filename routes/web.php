@@ -18,9 +18,9 @@ Route::get('/', function () {
     }
 
     return view('pages.index', [
-        'featuredProducts' => Product::query()->where('is_featured', true)->where('in_stock', true)->get(),
-        'bestSellingProducts' => Product::query()->where('is_best_selling', true)->where('in_stock', true)->get(),
-        'flashSaleProducts' => Product::query()->where('is_flash_sale', true)->where('in_stock', true)->get(),
+        'featuredProducts' => Product::query()->where('is_featured', true)->where('in_stock', true)->where('is_displayed', true)->get(),
+        'bestSellingProducts' => Product::query()->where('is_best_selling', true)->where('in_stock', true)->where('is_displayed', true)->get(),
+        'flashSaleProducts' => Product::query()->where('is_flash_sale', true)->where('in_stock', true)->where('is_displayed', true)->get(),
     ]);
 })->name('home');
 
@@ -58,7 +58,7 @@ Route::get('/shop', function () {
         return view('pages.shop', ['products' => collect()]);
     }
 
-    $products = Product::all();
+    $products = Product::where('is_displayed', true)->get();
     return view('pages.shop', ['products' => $products]);
 })->name('shop');
 

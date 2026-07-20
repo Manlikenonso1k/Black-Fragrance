@@ -30,6 +30,7 @@ class Product extends Model
         'care_instructions',
         'stock',
         'in_stock',
+        'is_displayed',
         'is_variable',
         'is_featured',
         'is_best_selling',
@@ -48,6 +49,7 @@ class Product extends Model
         'is_featured' => 'boolean',
         'is_best_selling' => 'boolean',
         'is_flash_sale' => 'boolean',
+        'is_displayed' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
